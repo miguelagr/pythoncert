@@ -2,19 +2,11 @@
 # -*- coding: utf-8 -*-
 #UNAM-CERT
 
-aprobados = []
-
-
-
 def palindromo(palabra):
     ppalabra=""
-    palabras = palabra.split()
-    for i in palabras:
-        ppalabra += i
-    print ppalabra
-    print ppalabra[::-1]
+    for i in palabra.split():
+        ppalabra += i.upper()
     if ppalabra == ppalabra[::-1]:
-        print "si es"
         return True
     return False
 
