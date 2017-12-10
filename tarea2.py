@@ -1,6 +1,18 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#UNAM-CERT
+
 from random import *
 
 def passwd(minusculas,mayusculas,digitos,contra=""):
+    """
+    Regresa una contraseña segura
+    Argumentos:
+        numero de mayusculas, minusculas y digitos (int)
+    Salida:
+        contraseña segura (str)
+    """
+    
     chars=[]
     if minusculas:
         chars.append("min")
@@ -25,3 +37,4 @@ def passwd(minusculas,mayusculas,digitos,contra=""):
             return passwd(minusculas,mayusculas,digitos-1,contra)
 
     return contra
+print passwd(6,2,4)
