@@ -31,9 +31,9 @@ def num_primo(n):
     """
     Regresa en valor booleano si es primo o no
     Argumentos:
-        tamaño de la lista (int)
+        numero (int)
     Salida:
-        lista de numeros (int[])
+        Cierto o falso (bool)
     """
     for i in range(int(sqrt(n))+1):
         if i not in range(2):
@@ -42,6 +42,13 @@ def num_primo(n):
     return True
 
 def list_primos(n,i=2,primos=[]):
+    """
+    Regresa en valor booleano si es primo o no
+    Argumentos:
+        tamaño de la lista (int)
+    Salida:
+        lista de numeros (int[])
+    """
     if n<0:
         return primos
     else:
