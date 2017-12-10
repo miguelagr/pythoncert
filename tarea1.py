@@ -2,13 +2,18 @@
 # -*- coding: utf-8 -*-
 #UNAM-CERT
 
-
 def maximo_palindromo(cadenar):
+    """
+    Regresa el palìndromo mas grande
+    que puede ser formado
+    Recibe:
+        str - La cadena de la que extraemos el palindromo mas grande
+    Regresa:
+        str - El palindromo mas grande encontrado
+    """
     cadena=""
     for c in cadenar.split():
         cadena += c
-    #print cadena
-    
     maxp=""
     pal=""
     for i in range(len(cadena)):
@@ -18,7 +23,6 @@ def maximo_palindromo(cadenar):
                 break
         if len(pal) > len(maxp):
             maxp = pal
+    return maxp
 
-    print maxp
-
-maximo_palindromo("aaanitalaval atinaaa aaaaaaaaaaaa")
+print maximo_palindromo("aaanitalaval atinaaa aaaaaaaaaaaa")
