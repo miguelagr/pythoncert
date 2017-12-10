@@ -2,14 +2,16 @@
 # -*- coding: utf-8 -*-
 #UNAM-CERT
 
+from math import *
+
 def maximo_palindromo(cadenar):
     """
     Regresa el palìndromo mas grande
     que puede ser formado
-    Recibe:
-        str - La cadena de la que extraemos el palindromo mas grande
-    Regresa:
-        str - El palindromo mas grande encontrado
+    Argumentos:
+        cadena (str)
+    Salida:
+        palindromo (str)
     """
     cadena=""
     for c in cadenar.split():
@@ -25,4 +27,28 @@ def maximo_palindromo(cadenar):
             maxp = pal
     return maxp
 
+def num_primo(n):
+    """
+    Regresa en valor booleano si es primo o no
+    Argumentos:
+        tamaño de la lista (int)
+    Salida:
+        lista de numeros (int[])
+    """
+    for i in range(int(sqrt(n))+1):
+        if i not in range(2):
+            if n % i == 0:
+                return False
+    return True
+
+def list_primos(n,i=2,primos=[]):
+    if n<0:
+        return primos
+    else:
+        if num_primo(i):
+            primos.append(i)
+            n -= 1
+        return list_primos(n,i+1,primos)
+
+print list_primos(10)
 print maximo_palindromo("aaanitalaval atinaaa aaaaaaaaaaaa")
