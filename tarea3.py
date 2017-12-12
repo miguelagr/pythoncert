@@ -3,13 +3,21 @@
 #UNAM-CERT
 let_num = {'a':'@','e':'3','i':'1','o':'0','s':'5','y':'&'}
 
+def may_min(cad):
+for i in range(len(a)+1)[1:]:
+	for h in combinations(range(len(a)),i):
+			li=list(a)
+			for k in h:
+				li[k]=li[k].upper()
+				print ''.join(li)
+
 
 def genera_palabras(cad):
-    cad = ''.join(map(lambda x:let_num[x] if x in let_num else x,cad))
-    return cad
+	cad = ''.join(map(lambda x:let_num[x] if x in let_num else x,cad))
+	return cad
 
 def genera_dicc(entrada,salida):
-    dicc = []
+	dicc = []
     with open(entrada,'r') as lee_archivo, open(salida,'w') as sal_dicc:
         for line in lee_archivo.readlines():
             dicc.append(genera_palabras(line[:-1]))
