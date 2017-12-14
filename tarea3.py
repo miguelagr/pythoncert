@@ -1,30 +1,36 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #UNAM-CERT
-let_num = {'a':'@','e':'3','i':'1','o':'0','s':'5','y':'&'}
+from itertools import *
+let_num = {'a':'4','e':'3','i':'1','o':'0','s':'5','y':'&'}
+
 
 def may_min(cad):
-for i in range(len(a)+1)[1:]:
-	for h in combinations(range(len(a)),i):
-			li=list(a)
-			for k in h:
-				li[k]=li[k].upper()
-				print ''.join(li)
+    with open('dicc.txt','a+') as sal_dicc:
+        for i in range(len(cad)+1)[1:]:
+            for comb in combinations(range(len(cad)),i):
+                li=list(cad)
+                for ind in comb:
+                    li[ind]=li[ind].upper()
+                sal_dicc.write('%s\n' % ''.join(li))
+        sal_dicc.close()
 
 
 def genera_palabras(cad):
-	cad = ''.join(map(lambda x:let_num[x] if x in let_num else x,cad))
-	return cad
+    cad = ''.join(map(lambda x:let_num[x] if x in let_num else x,cad))
+    return cad
 
-def genera_dicc(entrada,salida):
-	dicc = []
-    with open(entrada,'r') as lee_archivo, open(salida,'w') as sal_dicc:
+def genera_dicc(entrada):
+    dicc = []
+    dicci = dicc
+    with open(entrada,'r') as lee_archivo:
         for line in lee_archivo.readlines():
-            dicc.append(genera_palabras(line[:-1]))
-            print dicc
-        
-        print dicc
-        for passwd in dicc:
-            sal_dicc.write('%s\n' % passwd)
+            dicc.append(line[:-1])
+        for palp in permutations(dicci,2):
+            dicc.append(''.join(palp))
 
-genera_dicc('prueba.txt','dicc.txt')
+        print dicc
+        for pal in dicc:
+            print pal
+            may_min(pal)
+genera_dicc('prueba.txt')
