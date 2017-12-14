@@ -36,5 +36,6 @@ def asigna_calificaciones():
 #        print '%s tiene %s\n' % (alumno,calificacion_alumno[alumno])
 
 oob=asigna_calificaciones()
-print oob[5]
+for i in oob:
+    print i
 #imprime_calificaciones()
