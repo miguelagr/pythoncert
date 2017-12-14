@@ -1,0 +1,6 @@
+14/12/17 - 11:48:02
+md5: c371cc77dd2e470032a694fe9ffc4a75 
+sha1: cd48797e72c3b7cf549789a7fbfc7e493542a9fd
+Hosts totales: 65513
+Hosts prendidos: 4826
+Hosts Apagados: 60687

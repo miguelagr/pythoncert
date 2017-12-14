@@ -74,6 +74,10 @@ def genera_dicc(entrada,salida):
             may_min(pal,salida)
 
 if __name__ == '__main__':
+    """
+    Modo de uso
+    ./tarea3 "Archivo de entrada" "Archivo de salida"
+    """
     if len(sys.argv) != 3:
         printError('Indicar archivo a leer y archivo de reporte.', True)
     else:
