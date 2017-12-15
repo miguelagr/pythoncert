@@ -5,7 +5,7 @@
 aprobados = []
 
 def aprueba_becario(nombre_completo):
-    nombre_completo.lower()
+    nombre_completo = nombre_completo.lower()
     nombre_separado = nombre_completo.split()
     for n in nombre_separado:
         if n in ['gerardo', 'alan', 'guadalupe', 'rafael', 'karina']:
@@ -23,7 +23,7 @@ def elimina_becarios(nombre):
 becarios = ['Becerra Alvarado Hugo Alonso',
             'Cabrera Balderas Carlos Eduardo',
             'Corona Lopez Gerardo',
-            'Diez Gutierrez Gonzalez Rafael'
+            'Diez Gutierrez Gonzalez Rafael',
             'Disner Lopez Marco Antonio',
             'Garcia Romo Claudia Fernanda',
             'Gonzalez Ramirez Miguel Angel',
@@ -33,7 +33,7 @@ becarios = ['Becerra Alvarado Hugo Alonso',
             'Reyes Aldeco Jairo Alan',
             'Santiago Mancera Arturo Samuel',
             'Sarmiento Campos Jose',
-            'Sarmiento Campos Maria Guadalupe',
+            'Sarmiento Campos Maria GUAdalUpe',
             'Valle Juarez Pedro Angel',
             'Viveros Campos Ulises']
 for b in becarios:
