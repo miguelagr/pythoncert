@@ -7,6 +7,8 @@ from requests import get
 from requests.exceptions import ConnectionError
 from requests.auth import HTTPDigestAuth
 import random
+import socket
+import socks
 
 def printError(msg, exit = False):
         sys.stderr.write('Error:\t%s\n' % msg)
@@ -16,8 +18,10 @@ def printError(msg, exit = False):
 def addOptions():
     """
     Se agrega modo digest -d y se implementa el modo verboso -v
+    Se implementa modo Tor
     """
     parser = optparse.OptionParser()
+    parser.add_option('-T','--tor', dest='tor', default=None, action='store_true', help='Tor') 
     parser.add_option('-d','--digest', dest='digest', default=None, action='store_true', help='Digest Auth')
     parser.add_option('-v','--verbose', dest='verbose', default=None, action='store_true', help='If specified, prints detailed information during execution.')
     parser.add_option('-p','--port', dest='port', default='80', help='Port that the HTTP server is listening to.')
@@ -66,6 +70,9 @@ def makeRequest(host, user, password,head):
 
 
 if __name__ == '__main__':
+    """
+    Se implementa modo anonimo, elige un user agent cada peticion que realiza
+    """
     heads=[{"user-agent":"anom1"},
             {'user-agent':'Anmo2'},
             {'user-agent':'anom3'},
@@ -84,6 +91,10 @@ if __name__ == '__main__':
             ussers.close()
         else:
             lstUsr = []
+
+        if opts.tor:
+            socks.set_default_proxy(socks.SOCKS5,"127.0.0.1",9050)
+            socket.socket = socks.socksocket
 
         lstPass = map(lambda x: x[:-1],lstPass)
         lstUsr = map(lambda x: x[:-1],lstUsr)
