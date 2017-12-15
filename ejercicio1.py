@@ -17,6 +17,7 @@ def aprueba_becario(nombre_completo):
 def elimina_becarios(nombre):
     for b in becarios:
         if nombre.lower() == b.lower():
+            becarios.remove(nombre)
             return True
     return False
 
@@ -43,5 +44,14 @@ for b in becarios:
         print 'REPROBADO: ' + b
 
 
+print "\n"
+
 for i in aprobados:
+    print i
+
+print "Elimina Miguel Angel Gonzalez Ramirez\n"
+
+print elimina_becarios("Gonzalez Ramirez Miguel Angel")
+
+for i in becarios:
     print i

@@ -10,5 +10,5 @@ def palindromo(palabra):
         return True
     return False
 
-palindromo("anita lava la tina")
-#print becarios
+print "Cadena:anita lava la tina"
+print palindromo("anita lava la tina")
