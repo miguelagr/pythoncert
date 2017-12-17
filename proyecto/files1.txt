@@ -1,0 +1,12 @@
+zoom4.gif
+zoom6.gif
+zoom7.gif
+zoom8.gif
+zoom9.gif
+zoom_minus.gif
+zoom_plus.gif
+zoomifyViewer.swf
+zoomon.gif
+zsa2.cfm
+index.html
+.

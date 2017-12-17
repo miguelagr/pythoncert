@@ -1,0 +1,4 @@
+./proyecto.py -s www.prepa6.unam.mx -v -H -M -C -T -v -f files1.txt
+./proyecto.py -s aula.cert.unam.mx -P https -v -H -M -C -T -v -f files1.txt
+./proyecto.py -s revista.seguridad.unam.mx -P https -v -H -M -C -T -v -f files1.txt
+ 
